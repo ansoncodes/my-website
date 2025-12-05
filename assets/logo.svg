@@ -1,0 +1,27 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded background -->
+  <rect x="0" y="0" width="200" height="200" rx="40" fill="#f8f9fa" opacity="0"/>
+
+  <defs>
+    <linearGradient id="letterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Simple outer circle -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="#10b981" stroke-width="2.5" opacity="0.3"/>
+
+  <!-- Main letter 'a' (MUCH bigger now) -->
+  <text x="100" y="150"
+        font-family="'SF Pro Display', 'Inter', 'Arial', sans-serif"
+        font-size="180"
+        font-weight="600"
+        fill="url(#letterGradient)"
+        text-anchor="middle">
+    a
+  </text>
+
+  <!-- Dot accent moved slightly down -->
+  <circle cx="100" cy="175" r="4" fill="#10b981" opacity="0.6"/>
+</svg>
