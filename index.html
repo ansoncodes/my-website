@@ -114,6 +114,74 @@
             position: relative;
         }
 
+        /* GitHub Button Style */
+        .github-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: #24292e;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .github-button:hover {
+            background-color: #10B981;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .github-button:active {
+            transform: translateY(0);
+        }
+
+        .github-button i {
+            font-size: 1.2em;
+        }
+
+        .project-links {
+            margin: 20px 0;
+        }
+
+        /* Social Media Buttons (Updated) */
+        .social-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: #24292e;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .social-button:hover {
+            background-color: #10B981;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .social-button:active {
+            transform: translateY(0);
+        }
+
+        .social-button i {
+            font-size: 1.2em;
+        }
+
         /* Advanced Background Animation */
         .background-animation {
             position: fixed;
@@ -520,7 +588,8 @@
             animation: fadeInUp 1s 1.3s forwards;
         }
 
-        .social-icon {
+        /* Updated Social Links in Hero */
+        .hero .social-links .social-icon {
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -537,7 +606,7 @@
             overflow: hidden;
         }
 
-        .social-icon::before {
+        .hero .social-links .social-icon::before {
             content: '';
             position: absolute;
             top: 50%;
@@ -551,12 +620,12 @@
             z-index: -1;
         }
 
-        .social-icon:hover::before {
+        .hero .social-links .social-icon:hover::before {
             width: 100%;
             height: 100%;
         }
 
-        .social-icon:hover {
+        .hero .social-links .social-icon:hover {
             transform: translateY(-5px) rotate(15deg);
             border-color: var(--primary);
             box-shadow: var(--shadow-glow);
@@ -922,151 +991,89 @@
         }
 
         /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    align-items: stretch; /* Make all cards stretch to same height */
+}
 
-        .project-card {
-            background: var(--dark-light);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: var(--transition-extra-smooth);
-        }
+.project-card {
+    background: var(--dark-light);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: var(--transition-extra-smooth);
+    display: flex; /* Add flex display */
+    flex-direction: column; /* Stack content vertically */
+    height: 100%; /* Take full height of grid cell */
+}
 
-        .project-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        .project-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: var(--shadow-dark);
-            border-color: rgba(16, 185, 129, 0.2);
-        }
+.project-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: var(--shadow-dark);
+    border-color: rgba(16, 185, 129, 0.2);
+}
 
-        .project-img {
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            position: relative;
-            overflow: hidden;
-        }
+.project-content {
+    padding: 30px;
+    position: relative;
+    display: flex; /* Add flex display */
+    flex-direction: column; /* Stack content vertically */
+    flex: 1; /* Allow content to grow and fill space */
+}
 
-        .project-img::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: var(--transition-smooth);
-        }
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
 
-        .project-card:hover .project-img::before {
-            left: 100%;
-        }
+/* Ensure the content between header and buttons takes available space */
+.project-content ul {
+    margin-bottom: 20px;
+    flex-shrink: 0; /* Prevent shrinking */
+}
 
-        .project-img::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(0,0,0,0.3), transparent);
-        }
+.project-links {
+    margin: 20px 0;
+    margin-top: auto; /* Push to bottom of flex container */
+}
 
-        .project-content {
-            padding: 30px;
-            position: relative;
-        }
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 0; /* Remove previous margin */
+    margin-bottom: 0; /* Ensure no extra margin */
+}
 
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
+.project-tech span {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--primary-light);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition);
+}
 
-        .project-links {
-            display: flex;
-            gap: 10px;
-        }
-
-        .project-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--light);
-            text-decoration: none;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--primary);
-            transform: scale(0);
-            border-radius: 50%;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .project-link:hover::before {
-            transform: scale(1);
-        }
-
-        .project-link:hover {
-            transform: rotate(15deg);
-            color: white;
-        }
-
-        .project-link i {
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 20px;
-        }
-
-        .project-tech span {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--primary-light);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            font-family: 'Inter', sans-serif;
-            transition: var(--transition);
-        }
-
-        .project-tech span:hover {
-            transform: translateY(-2px);
-            background: var(--primary);
-            color: white;
-        }
-
+.project-tech span:hover {
+    transform: translateY(-2px);
+    background: var(--primary);
+    color: white;
+}
         /* Certifications */
         .certifications-grid {
             display: grid;
@@ -1169,6 +1176,15 @@
             margin-left: auto;
             margin-right: auto;
             font-family: 'Inter', sans-serif;
+        }
+
+        /* Updated Footer Social Links */
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .copyright {
@@ -1401,6 +1417,11 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .footer-social-links {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1422,6 +1443,11 @@
             
             .about-stats {
                 grid-template-columns: 1fr;
+            }
+            
+            .github-button, .social-button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -1677,98 +1703,95 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <div class="section-header scroll-animate">
-                <h2>Projects</h2>
-                <p>Some of my notable projects combining AI, ML, and full-stack development</p>
+<section id="projects">
+    <div class="container">
+        <div class="section-header scroll-animate">
+            <h2>Projects</h2>
+            <p>Some of my notable projects combining AI, ML, and full-stack development</p>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card scroll-animate delay-1">
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Cartzy – Multi-Vendor E-Commerce</h3>
+                    </div>
+                    <p>Real-time multi-vendor e-commerce platform with dedicated modules for Admin, Seller, and Customer.</p>
+                    <ul>
+                        <li>Real-time order updates with Django Channels and WebSockets</li>
+                        <li>Google OAuth2 login and role-based access control</li>
+                        <li>Razorpay Payment Gateway integration</li>
+                        <li>Seller dashboards, analytics, and inventory management</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/smec-community-dev/cartzy-abhiram-anson/tree/dev" class="github-button" target="_blank">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Django</span>
+                        <span>React.js</span>
+                        <span>WebSockets</span>
+                        <span>Razorpay API</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                </div>
             </div>
             
-            <div class="projects-grid">
-                <div class="project-card scroll-animate delay-1">
-                    <div class="project-img"></div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>Cartzy – Multi-Vendor E-Commerce</h3>
-                            <div class="project-links">
-                                <a href="https://github.com/smec-community-dev/cartzy-abhiram-anson/tree/dev" class="project-link" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <p>Real-time multi-vendor e-commerce platform with dedicated modules for Admin, Seller, and Customer.</p>
-                        <ul>
-                            <li>Real-time order updates with Django Channels and WebSockets</li>
-                            <li>Google OAuth2 login and role-based access control</li>
-                            <li>Razorpay Payment Gateway integration</li>
-                            <li>Seller dashboards, analytics, and inventory management</li>
-                        </ul>
-                        <div class="project-tech">
-                            <span>Django</span>
-                            <span>React.js</span>
-                            <span>WebSockets</span>
-                            <span>Razorpay API</span>
-                            <span>PostgreSQL</span>
-                        </div>
+            <div class="project-card scroll-animate delay-2">
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>AI Image Caption Generator</h3>
+                    </div>
+                    <p>Image-to-speech pipeline using PyTorch, Hugging Face ViT-GPT2, and Glow-TTS.</p>
+                    <ul>
+                        <li>End-to-end multimodal processing: image analysis, caption generation, speech output</li>
+                        <li>Designed for accessibility tools and automated content creation</li>
+                        <li>Optimized model inference for real-time processing</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ansoncodes/AI-Image-Caption-Generator-Using-ViT-GPT2-and-TTS" class="github-button" target="_blank">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                    <div class="project-tech">
+                        <span>PyTorch</span>
+                        <span>Hugging Face</span>
+                        <span>ViT-GPT2</span>
+                        <span>Glow-TTS</span>
+                        <span>Computer Vision</span>
                     </div>
                 </div>
-                
-                <div class="project-card scroll-animate delay-2">
-                    <div class="project-img"></div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>AI Image Caption Generator</h3>
-                            <div class="project-links">
-                                <a href="https://github.com/ansoncodes/AI-Image-Caption-Generator-Using-ViT-GPT2-and-TTS" class="project-link" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <p>Image-to-speech pipeline using PyTorch, Hugging Face ViT-GPT2, and Glow-TTS.</p>
-                        <ul>
-                            <li>End-to-end multimodal processing: image analysis, caption generation, speech output</li>
-                            <li>Designed for accessibility tools and automated content creation</li>
-                            <li>Optimized model inference for real-time processing</li>
-                        </ul>
-                        <div class="project-tech">
-                            <span>PyTorch</span>
-                            <span>Hugging Face</span>
-                            <span>ViT-GPT2</span>
-                            <span>Glow-TTS</span>
-                            <span>Computer Vision</span>
-                        </div>
+            </div>
+            
+            <div class="project-card scroll-animate delay-3">
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Real-Time Object Detection</h3>
                     </div>
-                </div>
-                
-                <div class="project-card scroll-animate delay-3">
-                    <div class="project-img"></div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>Real-Time Object Detection</h3>
-                            <div class="project-links">
-                                <a href="https://github.com/ansoncodes/object_detection_model" class="project-link" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <p>Real-time object detection pipeline using Ultralytics YOLOv8 (PyTorch).</p>
-                        <ul>
-                            <li>Preprocessing, model inference, and bounding box visualization</li>
-                            <li>Applications in smart surveillance and warehouse automation</li>
-                            <li>Achieved high accuracy with optimized model for edge deployment</li>
-                        </ul>
-                        <div class="project-tech">
-                            <span>PyTorch</span>
-                            <span>YOLOv8</span>
-                            <span>Computer Vision</span>
-                            <span>Real-time Processing</span>
-                            <span>OpenCV</span>
-                        </div>
+                    <p>Real-time object detection pipeline using Ultralytics YOLOv8 (PyTorch).</p>
+                    <ul>
+                        <li>Preprocessing, model inference, and bounding box visualization</li>
+                        <li>Applications in smart surveillance and warehouse automation</li>
+                        <li>Achieved high accuracy with optimized model for edge deployment</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ansoncodes/object_detection_model" class="github-button" target="_blank">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                    <div class="project-tech">
+                        <span>PyTorch</span>
+                        <span>YOLOv8</span>
+                        <span>Computer Vision</span>
+                        <span>Real-time Processing</span>
+                        <span>OpenCV</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Certifications Section -->
     <section id="certifications">
@@ -1797,15 +1820,15 @@
                 <div class="footer-logo">An<span>son</span></div>
                 <p class="footer-tagline">AI & Full-Stack Developer passionate about building intelligent applications and scalable systems</p>
                 
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/anson-antony-694160219/" class="social-icon" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
+                <div class="footer-social-links">
+                    <a href="https://www.linkedin.com/in/anson-antony-694160219/" class="social-button" target="_blank">
+                        <i class="fab fa-linkedin-in"></i> LinkedIn
                     </a>
-                    <a href="https://github.com/ansoncodes" class="social-icon" target="_blank">
-                        <i class="fab fa-github"></i>
+                    <a href="https://github.com/ansoncodes" class="social-button" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
                     </a>
-                    <a href="mailto:ansonantony783@gmail.com" class="social-icon">
-                        <i class="fas fa-envelope"></i>
+                    <a href="mailto:ansonantony783@gmail.com" class="social-button">
+                        <i class="fas fa-envelope"></i> Email
                     </a>
                 </div>
                 
@@ -2040,7 +2063,7 @@
         statNumbers.forEach(stat => statObserver.observe(stat));
         
         // Add ripple effect to buttons on click
-        const buttons = document.querySelectorAll('.btn');
+        const buttons = document.querySelectorAll('.btn, .github-button, .social-button');
         buttons.forEach(button => {
             button.addEventListener('click', function(e) {
                 const ripple = document.createElement('span');
